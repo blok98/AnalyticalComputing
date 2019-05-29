@@ -1,11 +1,7 @@
 import json
 import sys
 import numpy
-
-with open("data.json") as json_file:
-    data = json.load(json_file)
-
-input=[1,1,1,1,1]
+from myMethods import *
 
 
 def printm(matrix):
@@ -94,14 +90,23 @@ def vectorMultiplication(matrix,vector):
     return newVector
 
 
+def getInput():
+    invoer=input("input vector: ")
+    invoer=invoer.replace("]", "").replace("[", "").split(",")
+    invoer=typeList(invoer,int)
+    return invoer
 
+
+
+
+data=openjs("data.json")
 
 collection=makeList(data,input)
 printm(collection)
 print("\n")
 newMatrix=dotProduct(collection)
 printm(newMatrix)
-newVector=vectorMultiplication(newMatrix,[1,1,1,1,1])
+newVector=vectorMultiplication(newMatrix,getInput())
 printm(newVector)
 
 
